@@ -2,9 +2,12 @@
 #define INCLUDES_HPP
 
 #include <exception>
+#include <fstream>
 #include <iostream>
+#include <sstream>
 #include <string>
 
+using std::cerr;
 using std::cout;
 using std::endl;
 using std::string;
@@ -23,5 +26,9 @@ using std::string;
 #endif
 
 #include <GLFW/glfw3.h>
+const GLuint ShaderError = static_cast<GLuint>(-1);
+
+GLuint setupShaders(GLuint *vertexShader, GLuint *fragmentShader,
+                    GLuint *computeShader);
 
 #endif

@@ -1,4 +1,5 @@
 #include "../includes/includes.hpp"
+#include <OpenGL/OpenGL.h>
 #include <exception>
 #include <string>
 
@@ -49,7 +50,19 @@ int main(int argc, char **argv) {
       glfwCreateWindow(1920, 1080, "Particle System", nullptr, nullptr);
   randomWindowManagment(window);
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+  GLuint vertexShader, fragmentShader, computeShader;
+  GLuint shaderProgram =
+      setupShaders(&vertexShader, &fragmentShader, &computeShader);
+  if (shaderProgram == ShaderError) {
+    glfwTerminate();
+    exit(-1);
+  }
+  glUseProgram(shaderProgram);
   mainLoop(window);
   glfwTerminate();
+  glDeleteShader(vertexShader);
+  glDeleteShader(fragmentShader);
+  glDeleteShader(computeShader);
+  glDeleteProgram(shaderProgram);
   return 0;
 }
