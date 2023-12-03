@@ -1,4 +1,5 @@
 #include "../includes/includes.hpp"
+#include <OpenCL/OpenCL.h>
 #include <OpenGL/OpenGL.h>
 #include <exception>
 #include <string>
@@ -45,6 +46,15 @@ void mainLoop(GLFWwindow *window) {
   }
 }
 
+void cleanUp(GLuint *vertexShader, GLuint *fragmentShader,
+             GLuint *computeShader, GLuint *shaderProgram) {
+  glfwTerminate();
+  glDeleteShader(*vertexShader);
+  glDeleteShader(*fragmentShader);
+  glDeleteShader(*computeShader);
+  glDeleteProgram(*shaderProgram);
+}
+
 int main(int argc, char **argv) {
   // variables
   GLuint vertexShader, fragmentShader, computeShader;
@@ -52,7 +62,7 @@ int main(int argc, char **argv) {
   cl_command_queue clQueue;
   cl_program clProgram;
   errorManagment(argc, argv);
-  // initialisation
+  // initialisation of GLFW Window
   GLFWwindow *window =
       glfwCreateWindow(1920, 1080, "Particle System", nullptr, nullptr);
   randomWindowManagment(window);
@@ -69,10 +79,6 @@ int main(int argc, char **argv) {
   // main loop of the program
   mainLoop(window);
   // cleanup of the program
-  glfwTerminate();
-  glDeleteShader(vertexShader);
-  glDeleteShader(fragmentShader);
-  glDeleteShader(computeShader);
-  glDeleteProgram(shaderProgram);
-  return 0;
+  cleanUp(&vertexShader, &fragmentShader, &computeShader,
+          &shaderProgram) return 0;
 }
