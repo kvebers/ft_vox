@@ -39,18 +39,26 @@ void randomWindowManagment(GLFWwindow *window) {
 void mainLoop(GLFWwindow *window) {
   while (!glfwWindowShouldClose(window)) {
     glClear(GL_COLOR_BUFFER_BIT);
+
     glfwSwapBuffers(window);
     glfwPollEvents();
   }
 }
 
 int main(int argc, char **argv) {
+  // variables
+  GLuint vertexShader, fragmentShader, computeShader;
+  cl_context clContext;
+  cl_command_queue clQueue;
+  cl_program clProgram;
   errorManagment(argc, argv);
+  // initialisation
   GLFWwindow *window =
       glfwCreateWindow(1920, 1080, "Particle System", nullptr, nullptr);
   randomWindowManagment(window);
+  // clearing color to black instead of read
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-  GLuint vertexShader, fragmentShader, computeShader;
+  // setup for the vertex, fragment and compute shaders
   GLuint shaderProgram =
       setupShaders(&vertexShader, &fragmentShader, &computeShader);
   if (shaderProgram == ShaderError) {
@@ -58,7 +66,9 @@ int main(int argc, char **argv) {
     exit(-1);
   }
   glUseProgram(shaderProgram);
+  // main loop of the program
   mainLoop(window);
+  // cleanup of the program
   glfwTerminate();
   glDeleteShader(vertexShader);
   glDeleteShader(fragmentShader);
