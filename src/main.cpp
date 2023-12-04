@@ -58,9 +58,10 @@ void cleanUp(GLuint *vertexShader, GLuint *fragmentShader,
 int main(int argc, char **argv) {
   // variables
   GLuint vertexShader, fragmentShader, computeShader;
-  cl_context clContext;
-  cl_command_queue clQueue;
-  cl_program clProgram;
+  // cl_context clContext;
+  // cl_command_queue clQueue;
+  // cl_program clProgram;
+
   errorManagment(argc, argv);
   // initialisation of GLFW Window
   GLFWwindow *window =
@@ -79,6 +80,6 @@ int main(int argc, char **argv) {
   // main loop of the program
   mainLoop(window);
   // cleanup of the program
-  cleanUp(&vertexShader, &fragmentShader, &computeShader,
-          &shaderProgram) return 0;
+  cleanUp(&vertexShader, &fragmentShader, &computeShader, &shaderProgram);
+  return 0;
 }

@@ -1,12 +1,11 @@
 #include "../includes/includes.hpp"
 #include <OpenGL/OpenGL.h>
 
-
 GLuint loadShader(const char *filePath, GLenum shaderType) {
   std::ifstream shaderFile(filePath);
   if (!shaderFile.is_open()) {
     std::cerr << "Failed to open shader file: " << filePath << std::endl;
-    return 0;
+    return ShaderError;
   }
   std::stringstream shaderStream;
   shaderStream << shaderFile.rdbuf();
@@ -25,28 +24,27 @@ GLuint loadShader(const char *filePath, GLenum shaderType) {
     glGetShaderInfoLog(shader, logLength, nullptr, &errorLog[0]);
     std::cerr << "Shader compilation error: " << errorLog << std::endl;
     glDeleteShader(shader);
-    return 0;
+    return ShaderError;
   }
   return shader;
 }
 
 GLuint setupShaders(GLuint *vertexShader, GLuint *fragmentShader,
                     GLuint *computeShader) {
-  *vertexShader = loadShader("../shaders/vertexShader.vert", GL_VERTEX_SHADER);
-  if (vertexShader == 0) {
+  *vertexShader = loadShader("shaders/vertexShader.vert", GL_VERTEX_SHADER);
+  if (*vertexShader == ShaderError) {
     cerr << "Failed to load vertexShader" << endl;
     return ShaderError;
   }
   *fragmentShader =
-      loadShader("../shaders/fragmentShader.frag", GL_FRAGMENT_SHADER);
-  if (fragmentShader == 0) {
+      loadShader("shaders/fragmentShader.frag", GL_FRAGMENT_SHADER);
+  if (*fragmentShader == ShaderError) {
     cerr << "Failed to load fragmentShader" << endl;
     glDeleteShader(*vertexShader);
     return ShaderError;
   }
-  *computeShader =
-      loadShader("../shaders/computeShader.comp", GL_COMPUTE_SHADER);
-  if (computeShader == 0) {
+  *computeShader = loadShader("shaders/computeShader.comp", GL_COMPUTE_SHADER);
+  if (*computeShader == ShaderError) {
     cerr << "Failed to load computeShader" << endl;
     glDeleteShader(*vertexShader);
     glDeleteShader(*fragmentShader);
