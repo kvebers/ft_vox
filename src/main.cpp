@@ -55,6 +55,9 @@ void cleanUp(GLuint *vertexShader, GLuint *fragmentShader,
   glDeleteProgram(*shaderProgram);
 }
 
+
+
+
 int main(int argc, char **argv) {
   // variables
   GLuint vertexShader, fragmentShader, computeShader;
