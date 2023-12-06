@@ -31,7 +31,8 @@ const GLuint ShaderError = static_cast<GLuint>(-1);
 // Functions
 GLuint setupShaders(GLuint *vertexShader, GLuint *fragmentShader,
                     GLuint *computeShader);
-
+void cleanUp(GLuint *vertexShader, GLuint *fragmentShader,
+             GLuint *computeShader, GLuint *shaderProgram);
 // Particles struct using cl_vectors and ints
 typedef struct {
   cl_float3 position;

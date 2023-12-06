@@ -46,18 +46,6 @@ void mainLoop(GLFWwindow *window) {
   }
 }
 
-void cleanUp(GLuint *vertexShader, GLuint *fragmentShader,
-             GLuint *computeShader, GLuint *shaderProgram) {
-  glfwTerminate();
-  glDeleteShader(*vertexShader);
-  glDeleteShader(*fragmentShader);
-  glDeleteShader(*computeShader);
-  glDeleteProgram(*shaderProgram);
-}
-
-
-
-
 int main(int argc, char **argv) {
   // variables
   GLuint vertexShader, fragmentShader, computeShader;
