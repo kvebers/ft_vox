@@ -47,13 +47,19 @@ void mainLoop(GLFWwindow *window) {
 }
 
 int main(int argc, char **argv) {
-  // variables
-  GLuint vertexShader, fragmentShader, computeShader;
-  // cl_context clContext;
-  // cl_command_queue clQueue;
-  // cl_program clProgram;
-
   errorManagment(argc, argv);
+  // cl init stuff
+  cl_context context;
+  cl_command_queue queue;
+  cl_mem clBuffer;
+  cl_platform_id platform;
+  cl_device_id device;
+  clGetPlatformIDs(1, &platform, nullptr);
+  clGetDeviceIDs(platform, CL_DEVICE_TYPE_GPU, 1, &device, nullptr);
+  context = clCreateContext(nullptr, 1, &device, nullptr, nullptr, nullptr);
+  queue = clCreateCommandQueue(context, device, 0, nullptr);
+  // Open Gl Init stuff
+  GLuint vertexShader, fragmentShader, computeShader;
   // initialisation of GLFW Window
   GLFWwindow *window =
       glfwCreateWindow(1920, 1080, "Particle System", nullptr, nullptr);
