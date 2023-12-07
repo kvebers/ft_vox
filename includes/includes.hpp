@@ -1,6 +1,7 @@
 #ifndef INCLUDES_HPP
 #define INCLUDES_HPP
 
+#include <algorithm>
 #include <exception>
 #include <fstream>
 #include <iostream>
@@ -11,6 +12,7 @@ using std::cerr;
 using std::cout;
 using std::endl;
 using std::string;
+using std::vector;
 
 #include <GL/glew.h>
 #ifdef __APPLE__

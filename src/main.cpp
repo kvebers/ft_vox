@@ -51,7 +51,7 @@ int main(int argc, char **argv) {
   // cl init stuff
   cl_context context;
   cl_command_queue queue;
-  cl_mem clBuffer;
+  // cl_mem clBuffer;
   cl_platform_id platform;
   cl_device_id device;
   clGetPlatformIDs(1, &platform, nullptr);
@@ -73,6 +73,8 @@ int main(int argc, char **argv) {
     glfwTerminate();
     exit(-1);
   }
+  vector<Particle> particles;
+
   glUseProgram(shaderProgram);
   // main loop of the program
   mainLoop(window);
