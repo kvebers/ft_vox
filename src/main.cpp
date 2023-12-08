@@ -40,7 +40,7 @@ void randomWindowManagment(GLFWwindow *window) {
 void mainLoop(GLFWwindow *window) {
   while (!glfwWindowShouldClose(window)) {
     glClear(GL_COLOR_BUFFER_BIT);
-
+  
     glfwSwapBuffers(window);
     glfwPollEvents();
   }
