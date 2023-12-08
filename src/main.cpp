@@ -40,7 +40,7 @@ void randomWindowManagment(GLFWwindow *window) {
 void mainLoop(GLFWwindow *window) {
   while (!glfwWindowShouldClose(window)) {
     glClear(GL_COLOR_BUFFER_BIT);
-  
+
     glfwSwapBuffers(window);
     glfwPollEvents();
   }
@@ -73,7 +73,7 @@ int main(int argc, char **argv) {
     glfwTerminate();
     exit(-1);
   }
-  vector<Particle> particles;
+  //vector<Particle> particles;
 
   glUseProgram(shaderProgram);
   // main loop of the program
