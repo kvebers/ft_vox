@@ -14,6 +14,8 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::stoi;
+using std::ifstream;
+using std::stringstream;
 
 #include <GL/glew.h>
 #ifdef __APPLE__
@@ -61,6 +63,11 @@ typedef struct {
   cl_command_queue queue;
   cl_platform_id platform;
   cl_device_id device;
+  cl_mem particleBuffer;
+  cl_mem glParticleBuffer; 
+  cl_program program;
+  cl_int result;
+  cl_kernel kernel;
 } OpenCompute;
 
 
