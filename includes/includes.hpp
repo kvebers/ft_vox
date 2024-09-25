@@ -60,18 +60,4 @@ typedef struct {
   GLuint shaderProgram;
 } Shaders;
 
-
-typedef struct {
-  cl_context context;
-  cl_command_queue queue;
-  cl_platform_id platform;
-  cl_device_id device;
-  cl_mem particleBuffer;
-  cl_mem glParticleBuffer; 
-  cl_program program;
-  cl_int result;
-  cl_kernel kernel;
-} OpenCompute;
-
-
 #endif
