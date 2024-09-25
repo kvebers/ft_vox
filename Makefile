@@ -1,7 +1,7 @@
 CXX := g++
-CXXFLAGS := -Wall -Wextra -Werror -Wno-c++11-extensions -std=c++11
-LDFLAGS := -L/Users/${USER}/.brew/Cellar/glfw/3.3.8/lib -lglfw -L/Users/kvebers/.brew/Cellar/glew/2.2.0_1/lib -lGLEW -framework OpenGL -framework OpenCL -framework CoreGraphics -framework CoreFoundation
-INCLUDES := -I/Users/kvebers/.brew/Cellar/glew/2.2.0_1/include -I/Users/kvebers/.brew/Cellar/glfw/3.3.8/include -I/path/to/your/OpenCL/include
+CXXFLAGS := -Wall -Wextra -Werror -Wno-c++17-extensions -std=c++17
+LDFLAGS := -L/Users/${USER}/.brew/Cellar/glfw/3.4/lib -lglfw -L/Users/${USER}/.brew/Cellar/glew/2.2.0_1/lib -lGLEW -framework OpenGL -framework OpenCL -framework CoreGraphics -framework CoreFoundation
+INCLUDES := -I/Users/${USER}/.brew/Cellar/glew/2.2.0_1/include -I/Users/${USER}/.brew/Cellar/glfw/3.3.8/include -I/path/to/your/OpenCL/include
 SRCDIR := src
 OBJDIR := obj
 SOURCES := $(wildcard $(SRCDIR)/*.cpp)
