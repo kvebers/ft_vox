@@ -27,11 +27,6 @@ using std::stringstream;
 #include <GL/gl.h>
 #endif
 
-#ifdef __APPLE__
-#include <OpenCL/cl.h>
-#else
-#include <CL/cl.h>
-#endif
 
 #include <GLFW/glfw3.h>
 const GLuint ShaderError = static_cast<GLuint>(-1);
@@ -42,16 +37,6 @@ GLuint setupShaders(GLuint *vertexShader, GLuint *fragmentShader,
 void cleanUpShaders(GLuint *vertexShader, GLuint *fragmentShader,
              GLuint *computeShader, GLuint *shaderProgram);
 // Particles struct using cl_vectors and ints
-typedef struct {
-  cl_float3 position;
-  cl_float3 velocity;
-  cl_int mass;
-  cl_int4 color;
-  cl_int lifetime;
-  cl_float3 acceleration;
-  cl_float radius;
-} Particle;
-
 
 typedef struct {
   GLuint vertexShader;
