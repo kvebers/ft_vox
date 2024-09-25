@@ -29,7 +29,7 @@ GLuint loadShader(const char *filePath, GLenum shaderType) {
   return shader;
 }
 
-void cleanUp(GLuint *vertexShader, GLuint *fragmentShader,
+void cleanUpShaders(GLuint *vertexShader, GLuint *fragmentShader,
              GLuint *computeShader, GLuint *shaderProgram) {
   glfwTerminate();
   glDeleteShader(*vertexShader);
@@ -72,7 +72,7 @@ GLuint setupShaders(GLuint *vertexShader, GLuint *fragmentShader,
     string errorLog(logLength, ' ');
     glGetProgramInfoLog(shaderProgram, logLength, nullptr, &errorLog[0]);
     cerr << "Shader program linking error: " << errorLog << endl;
-    cleanUp(vertexShader, fragmentShader, computeShader, &shaderProgram);
+    cleanUpShaders(vertexShader, fragmentShader, computeShader, &shaderProgram);
     return ShaderError;
   }
   return shaderProgram;

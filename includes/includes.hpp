@@ -7,6 +7,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <exception>
+#include <string>
 
 using std::cerr;
 using std::cout;
@@ -16,6 +18,7 @@ using std::vector;
 using std::stoi;
 using std::ifstream;
 using std::stringstream;
+
 
 #include <GL/glew.h>
 #ifdef __APPLE__
@@ -36,7 +39,7 @@ const GLuint ShaderError = static_cast<GLuint>(-1);
 // Functions
 GLuint setupShaders(GLuint *vertexShader, GLuint *fragmentShader,
                     GLuint *computeShader);
-void cleanUp(GLuint *vertexShader, GLuint *fragmentShader,
+void cleanUpShaders(GLuint *vertexShader, GLuint *fragmentShader,
              GLuint *computeShader, GLuint *shaderProgram);
 // Particles struct using cl_vectors and ints
 typedef struct {
