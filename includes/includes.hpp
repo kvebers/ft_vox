@@ -13,6 +13,7 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::vector;
+using std::stoi;
 
 #include <GL/glew.h>
 #ifdef __APPLE__
@@ -45,5 +46,22 @@ typedef struct {
   cl_float3 acceleration;
   cl_float radius;
 } Particle;
+
+
+typedef struct {
+  GLuint vertexShader;
+  GLuint fragmentShader;
+  GLuint computeShader;
+  GLuint shaderProgram;
+} Shaders;
+
+
+typedef struct {
+  cl_context context;
+  cl_command_queue queue;
+  cl_platform_id platform;
+  cl_device_id device;
+} OpenCompute;
+
 
 #endif
