@@ -73,18 +73,18 @@ void mainLoop(GLFWwindow *window, Shaders *shaders) {
         glBindVertexArray(0);
         glfwSwapBuffers(window);
         glfwPollEvents();
-  }
+  
 }
 
 
 int main(int argc, char **argv) {
   Shaders shaders;
-  int numberOfParticles = errorManagment(argc, argv);
-  (void)numberOfParticles;
+  int seed = errorManagment(argc, argv);
+  (void)seed;
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
   glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-  GLFWwindow *window = glfwCreateWindow(1920, 1080, "Particle System", nullptr, nullptr);
+  GLFWwindow *window = glfwCreateWindow(1920, 1080, "FT_VOX", nullptr, nullptr);
   randomWindowManagment(window);
   shaders.shaderProgram = setupShaders(&shaders.vertexShader, &shaders.fragmentShader, &shaders.computeShader);
   if (shaders.shaderProgram == ShaderError) { glfwTerminate(); exit(-1);}
