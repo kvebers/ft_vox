@@ -43,7 +43,7 @@ void randomWindowManagment(GLFWwindow *window) {
   glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 }
 
-void mainLoop(GLFWwindow *window) {
+void mainLoop(GLFWwindow *window, Shaders *shaders) {
   while (!glfwWindowShouldClose(window)) {
     glClear(GL_COLOR_BUFFER_BIT);
     glfwSwapBuffers(window);
@@ -60,7 +60,7 @@ int main(int argc, char **argv) {
   shaders.shaderProgram = setupShaders(&shaders.vertexShader, &shaders.fragmentShader, &shaders.computeShader);
   if (shaders.shaderProgram == ShaderError) { glfwTerminate(); exit(-1);}
   glUseProgram(shaders.shaderProgram);
-  mainLoop(window);
+  mainLoop(window, &shaders);
   cleanUpShaders(&shaders.vertexShader, &shaders.fragmentShader, &shaders.computeShader, &shaders.shaderProgram);
   glfwTerminate();
   return 0;
