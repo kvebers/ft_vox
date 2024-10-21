@@ -73,7 +73,7 @@ void mainLoop(GLFWwindow *window, Shaders *shaders) {
         glBindVertexArray(0);
         glfwSwapBuffers(window);
         glfwPollEvents();
-  
+  }
 }
 
 
